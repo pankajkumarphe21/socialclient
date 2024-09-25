@@ -1,0 +1,22 @@
+html{
+    overflow-x: hidden;
+}
+.app{
+    height: 100vh;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.link{
+    text-decoration: none;
+    color: cadetblue;
+}
+.light{
+    background-color: white;
+    color: black;
+}
+.dark{
+    background-color: rgb(46, 43, 43);
+    color: white;
+}

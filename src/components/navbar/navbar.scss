@@ -1,0 +1,95 @@
+.navbar{
+    height: 70px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    hr{
+        height: 1px;
+        margin-top: 15px;
+        background-color: black;
+        width: 100vw;
+    }
+    .in{
+        display: flex;
+    .left{
+        color: blue;
+        display: flex;
+        align-items: center;
+        .icon{
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-right: 32px;
+            gap: 0px;
+            span{
+                color: blue;
+            }
+            .lefticon{
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                border-left: 9px solid cadetblue;
+            }
+            .righticon{
+                left: 10px;
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                border-right: 9px solid cadetblue;
+            }
+        }
+        .darkMode{
+            cursor: pointer;
+            margin-right: 22px;
+        }
+        .menu{
+            cursor: pointer;
+        }
+    }
+    .search{
+        margin-left: 32px;
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        padding-left: 10px;
+        input{
+            border: none;
+            padding: 10px 20px;
+            width: 600px;
+            background-color: inherit;
+            &:focus{
+                border: none;
+                outline: none;
+            }
+        }
+        .dark{
+            color: rgb(0, 255, 34);
+        }
+    }
+    .dark{
+        border: 2px solid black;
+    }
+    .right{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .icons{
+            margin-left: 62px;
+            display: flex;
+            gap: 20px;
+        }
+        .user{
+            margin-left: 12px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-right: 22px;
+        }
+        p{
+            cursor: pointer;
+        }
+    }
+    }
+}
