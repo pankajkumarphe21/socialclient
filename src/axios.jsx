@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const axiosInstance=axios.create({
-    baseURL:"https://socialapi-three.vercel.app",
-    headers:"Access-Control-Allow-Origin"
+    baseURL:"http://localhost:8800",
+    withCredentials:true
 });
 
 export default axiosInstance;

@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../features/current/currentUserSlice";
 import { updateDarkMode } from "../../features/darkmode/darkmodeSlice";
 import axiosInstance from "../../axios";
+import { useState } from "react";
+import { updateFriends } from "../../features/friends/friendsSlice";
 
 const Navbar = () => {
   const username=useSelector(state=>state.user.currentUser.username);
@@ -19,6 +21,11 @@ const Navbar = () => {
     await axiosInstance.post('/auth/logout');
     dispatch(updateUser(null));
   }
+  const handleSearch=async()=>{
+    const data=(await axiosInstance.post(`/auth/search/${friend}`)).data;
+    dispatch(updateFriends(data))
+  }
+  const [friend,setFriend]=useState("");
   return (
     <div className="navbar">
       <div className="in">
@@ -36,8 +43,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className={`search ${darkMode ? 'dark' : ''}`}>
-        <SearchOutlinedIcon/>
-        <input className={`${darkMode ? 'dark' : ''}`} type="text" placeholder="Search friends"/></div>
+        <SearchOutlinedIcon className="searchicon" onClick={handleSearch}/>
+        <input value={friend} onChange={(e)=>setFriend(e.target.value)} className={`${darkMode ? 'dark' : ''}`} type="text" placeholder="Search friends"/>
+      </div>
       <div className="right">
         <div className="icons">
           <MailOutlineOutlinedIcon/>

@@ -4,6 +4,7 @@ import darkModeReducer from '../features/darkmode/darkmodeSlice'
 import {persistReducer,FLUSH,REHYDRATE,PAUSE,PERSIST,PURGE,REGISTER} from "redux-persist";
 import storage from 'redux-persist/lib/storage'
 import persistStore from "redux-persist/es/persistStore";
+import friendsReducer from '../features/friends/friendsSlice'
 
 const persistConfig = {
   key: 'root',
@@ -13,7 +14,8 @@ const persistConfig = {
 
 const rootReducer=combineReducers({
   user:userReducer,
-  darkMode:darkModeReducer
+  darkMode:darkModeReducer,
+  friends:friendsReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

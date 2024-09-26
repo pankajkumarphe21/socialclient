@@ -5,6 +5,7 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import './profile.scss'
 import axiosInstance from '../../axios'
 import { useSelector } from "react-redux";
+import Friends from "../../components/friends/Friends";
 
 const Profile = () => {
   let {username} = useParams();
@@ -24,11 +25,14 @@ const Profile = () => {
   },[]);
   return (
     <div className="head">
+      <Friends/>
+      <div className="profiles">
       <Leftbar />
       <div className="profile">
         {username}
       </div>
       <Rightbar />
+      </div>
     </div>
   );
 };

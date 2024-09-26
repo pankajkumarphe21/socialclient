@@ -54,6 +54,9 @@
         align-items: center;
         background-color: transparent;
         padding-left: 10px;
+        .searchicon{
+            cursor: pointer;
+        }
         input{
             border: none;
             padding: 10px 20px;

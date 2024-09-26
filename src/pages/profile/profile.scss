@@ -1,6 +1,10 @@
 .head{
     display: flex;
-    .profile{
-        flex: 3;
+    flex-direction: column;
+    .profiles{
+        display: flex;
+        .profile{
+            flex: 3;
+        }
     }
 }
