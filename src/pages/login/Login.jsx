@@ -20,6 +20,7 @@ const Login = () => {
       const user=await axiosInstance.post('/auth/login',data);
       const userdata=user.data._doc
       setErr(user.data._doc)
+      console.log(user.data._doc)
       // dispatch(updateUser(userdata));
       // navigate(`/`);
       // setErr(null)
