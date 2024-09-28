@@ -14,10 +14,9 @@ const Register = () => {
     try {
       const user= await axiosInstance.post('/auth/register',data);
       const userdata=user.data._doc
-      setErr(user.data._doc)
-      // dispatch(updateUser(userdata));
-      // navigate(`/`);
-      // setErr(null);
+      dispatch(updateUser(userdata));
+      navigate(`/`);
+      setErr(null);
     } catch (error) {
       setErr(error.response.data);
     }
