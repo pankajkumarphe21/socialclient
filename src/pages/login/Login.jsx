@@ -16,6 +16,7 @@ const Login = () => {
   const handleSubmit=async(e)=>{
     e.preventDefault();
     try {
+      console.log(data)
       const user=await axiosInstance.post('/auth/login',data);
       const userdata=user.data._doc
       setErr(user.data._doc)
