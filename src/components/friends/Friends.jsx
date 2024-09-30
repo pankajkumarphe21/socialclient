@@ -8,11 +8,11 @@ const Friends = () => {
   const dispatch=useDispatch();
   return (
     <div className='friends'>
-        {friends.map((username,i)=>(
+        {/* {friends.map((username,i)=>(
             <div key={i}>
                 <Link onClick={()=>dispatch(updateFriends([]))} className='link' to={`/profile/${username}`}>{username}</Link>
             </div>
-        ))}
+        ))} */}
     </div>
   )
 }

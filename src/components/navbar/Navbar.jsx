@@ -15,7 +15,7 @@ import { updateFriends } from "../../features/friends/friendsSlice";
 
 const Navbar = () => {
   const username=useSelector(state=>state.user.currentUser.username);
-  const dispatch=useDispatch()
+  const dispatch=useDispatch();
   const darkMode=useSelector(state=>state.darkMode.darkMode);
   const handleLogout=async()=>{
     await axiosInstance.post('/auth/logout');

@@ -7,6 +7,7 @@ import Home from "./pages/home/Home";
 import Register from "./pages/register/Register";
 import Profile from "./pages/profile/Profile";
 import { useSelector } from "react-redux";
+import CreatePost from "./components/createpost/CreatePost";
 
 const App = () => {
   const currentUser=useSelector(state=>state.user.currentUser);
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/:username",
         element: <Profile />,
+      },
+      {
+        path:'/post',
+        element:<CreatePost/>
       },
     ],
   },
