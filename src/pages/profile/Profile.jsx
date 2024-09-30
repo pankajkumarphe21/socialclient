@@ -13,9 +13,7 @@ const Profile = () => {
   let {username} = useParams();
   const navigate=useNavigate();
   const dispatch=useDispatch()
-  const authUser=()=>{
-    return useSelector(state=>state.user.currentUser.username);
-  }
+  const authUser=useSelector(state=>state.user.currentUser.username);
   const [posts,setPosts]=useState([]);
   useEffect(()=>{
     const fetchData=async ()=>{
