@@ -1,3 +1,34 @@
 .leftbar{
     flex: 1;
+    overflow: hidden;
+    height: 80vh;
+    box-shadow: 1px 1px 1px 1px;
+    .leftin{
+        height: 100vh;
+        .image{
+            display: flex;
+            margin-top: 5px;
+            align-items: center;
+            padding-left: 12px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            cursor: pointer;
+            &:hover{
+                background-color: rgb(224, 207, 207);
+            }
+            img{
+                height: 39px;
+                width: 35px;
+                margin-right: 22px;
+            }
+            #user{
+                border-radius: 50%;
+            }
+        }
+        .dark.image{
+            &:hover{
+                background-color: gray;
+            }
+        }
+    }
 }

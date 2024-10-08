@@ -5,6 +5,19 @@
         display: flex;
         .profile{
             flex: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .image{
+                img{
+                    border-radius: 50%;
+                    border: 1px solid gray;
+                    height: 100px;
+                    width: 100px;
+                    overflow: hidden;
+                    object-fit: cover;
+                }
+            }
         }
     }
 }

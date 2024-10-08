@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const user=await axiosInstance.post('/auth/login',data);
-      const userdata=user.data._doc
+      const userdata=user.data;
       dispatch(updateUser(userdata));
       navigate(`/`);
       setErr(null)

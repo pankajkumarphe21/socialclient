@@ -1,7 +1,13 @@
-.friends{
-    div{
-        .link{
-            text-decoration: none;
+.friendshead{
+    display: flex;
+    .friends{
+        flex: 3;
+        display: flex;
+        justify-content: center;
+        div{
+            .link{
+                text-decoration: none;
+            }
         }
     }
 }

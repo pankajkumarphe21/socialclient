@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.scss";
 import { createBrowserRouter, Outlet, RouterProvider, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
@@ -8,6 +8,7 @@ import Register from "./pages/register/Register";
 import Profile from "./pages/profile/Profile";
 import { useSelector } from "react-redux";
 import CreatePost from "./components/createpost/CreatePost";
+import Friends from "./components/friends/Friends";
 
 const App = () => {
   const currentUser=useSelector(state=>state.user.currentUser);
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path:'/post',
         element:<CreatePost/>
+      },
+      {
+        path:'/search/friends',
+        element:<Friends/>
       },
     ],
   },

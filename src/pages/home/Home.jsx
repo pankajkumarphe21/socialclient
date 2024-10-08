@@ -8,7 +8,6 @@ import Friends from '../../components/friends/Friends'
 const Home = () => {
   return (
     <div className='home'>
-      <Friends/>
       <div className="feed">
         <Leftbar/>
         <Feed/>
