@@ -1,10 +1,14 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './rightbar.scss'
 
 const Rightbar = () => {
+  const navigate=useNavigate();
+  const handleClick=()=>{
+    navigate('/post')
+  }
   return (
     <div className='rightbar'>
-      <div className="createPost">
+      <div className="createPost" onClick={handleClick}>
         <Link className="link" to={'/post'}>Create New Post</Link>
       </div>
     </div>
