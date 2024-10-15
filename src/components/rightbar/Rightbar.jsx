@@ -9,7 +9,7 @@ const Rightbar = () => {
   return (
     <div className='rightbar'>
       <div className="createPost" onClick={handleClick}>
-        <Link className="link" to={'/post'}>Create New Post</Link>
+        Create New Post
       </div>
     </div>
   )
