@@ -6,7 +6,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import './profile.scss'
 import axiosInstance from '../../axios'
 import { useDispatch, useSelector } from "react-redux";
-import Friends from "../../components/friends/Friends";
 import Post from "../../components/post/Post";
 import { updateUser } from "../../features/current/currentUserSlice";
 
@@ -15,11 +14,14 @@ const Profile = () => {
   const [profilePic,setProfilePic]=useState(null);
   const navigate=useNavigate();
   const dispatch=useDispatch();
+  const [isFollowed,setIsFollowed]=useState(false);
   const [file,setFile]=useState(null);
   const authUser=useSelector(state=>state.user.currentUser.username);
+  const authUserId=useSelector(state=>state.user.currentUser._id);
   const userId=useSelector(state=>state.user.currentUser._id)
   const [posts,setPosts]=useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [err,setErr]=useState(null);
   const handleFileChange=(e)=>{
     setFile(e.target.files[0]);
   }
@@ -31,8 +33,20 @@ const Profile = () => {
   formData.append('pic',file);
   const handleSubmit=async(e)=>{
     e.preventDefault();
-    const d=await axiosInstance.post(`/auth/pic/${userId}`,formData);
-    dispatch(updateUser(d.data));
+    try {
+      const d=await axiosInstance.post(`/auth/pic/${userId}`,formData);
+      dispatch(updateUser(d.data));
+    } catch (error) {
+      setErr(error.response.data);
+    }
+  }
+  const handleFollow=async()=>{
+    try {
+      const data=await axiosInstance.post(`/auth/follow/${username}`);
+      setIsFollowed(!isFollowed);
+    } catch (error) {
+      console.log(error)
+    }
   }
   useEffect(()=>{
     const fetchData=async ()=>{
@@ -43,6 +57,15 @@ const Profile = () => {
         }
         else{
           username=user.data.username
+          const arr=user.data.followers;
+          if(arr.length!==0){
+            const newArr=arr.filter((userId)=>{
+                return userId===authUserId;
+              })
+              if(newArr.length==1){
+                setIsFollowed(true);
+              }
+          }
           setProfilePic(user.data.profilePic)
         }
       } catch (error) {
@@ -59,7 +82,7 @@ const Profile = () => {
       }
     };
     getPosts()
-  },[profilePic,username,refresh]);
+  },[profilePic,username,refresh,isFollowed]);
   return (
     <div className="head">
       <div className="profiles">
@@ -71,7 +94,9 @@ const Profile = () => {
         <form style={{display:`${authUser===username ? '' : 'none'}`}} encType="multipart/form-data">
             <input type="file" required onChange={handleFileChange} name="pic" />
             <button onClick={handleSubmit}>Change Pic</button>
+            { err ? err : '' }
         </form>
+        <button className="follow" onClick={handleFollow} style={{display:`${authUser===username ? 'none' : ''}`}}>{`${isFollowed ? 'Unfollow' : 'Follow'}`}</button>
       <div className="posts">
         {
           posts.map((post,i)=>(
