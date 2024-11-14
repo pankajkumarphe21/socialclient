@@ -44,6 +44,10 @@ const router = createBrowserRouter([
         element:<CreatePost/>
       },
       {
+        path:'/post/edit/:postId',
+        element:<CreatePost/>
+      },
+      {
         path:'/search/friends',
         element:<Friends/>
       },

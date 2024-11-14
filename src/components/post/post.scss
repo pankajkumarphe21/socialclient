@@ -1,0 +1,14 @@
+.post{
+    margin-top: 12px;
+    .top{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        .username{
+            text-decoration: none;
+        }
+        .edit{
+            cursor: pointer;
+        }
+    }
+}

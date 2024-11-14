@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axiosInstance from '../../axios'
-import './createpost.scss'
-import { useNavigate } from 'react-router-dom';
+import './editpost.scss'
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const CreatePost = () => {
+const EditPost = () => {
     const [desc,setDesc]=useState('');
     const [file, setFile] = useState(null);
+    const postId=useParams();
     const username=useSelector(state=>state.user.currentUser.username);
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -21,22 +22,25 @@ const CreatePost = () => {
           return;
         }
         try {
-            await axiosInstance.post('/post/create',formData);
+            await axiosInstance.post(`/post/edit/:${postId}`,formData);
             navigate(`/profile/${username}`)
         } catch (error) {
             console.log(error)
         }
-    }
+    };
+    useEffect(()=>{
+        
+    })
   return (
-    <div className='createPost'>
+    <div className='editPost'>
         <form encType="multipart/form-data">
             <input type="text" required onChange={(e) => setDesc(e.target.value)} name='desc' placeholder='Enter desc' id='desc'/>
             <input type="file" required onChange={handleFileChange} name="image" id="file" />
-            <button onClick={handleSubmit}>Create Post</button>
+            <button onClick={handleSubmit}>Edit Post</button>
         </form>
         {/* <img src={} alt="" /> */}
     </div>
   )
 }
 
-export default CreatePost
+export default EditPost
