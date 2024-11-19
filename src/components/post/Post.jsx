@@ -5,11 +5,16 @@ import {Link, useNavigate} from 'react-router-dom'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useSelector } from 'react-redux';
 import EditIcon from '@mui/icons-material/Edit';
+import { formatDistanceToNow } from "date-fns";
 
 const Post = ({data,handleDelete}) => {
   const [username,setUsername]=useState(null);
   const user=useSelector(state=>state.user.currentUser);
   const navigate=useNavigate();
+  let date=formatDistanceToNow(
+    data.date,
+    {includeSeconds: true}
+  );
   const handleEdit=()=>{
     navigate(`/post/edit/${data._id}`)
   }
@@ -29,6 +34,7 @@ const Post = ({data,handleDelete}) => {
       <hr />
       <img height={'250'} src={`data:image/jpeg;base64,${data.base64Image}`} alt=''></img>
       <p>{data.desc}</p>
+      <p>{date} ago</p>
       {username===user.username && <DeleteIcon onClick={handleDelete}/>}
     </div>
   )

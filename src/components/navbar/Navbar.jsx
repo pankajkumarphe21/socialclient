@@ -33,7 +33,7 @@ const Navbar = () => {
   },[user])
   const [friend,setFriend]=useState("");
   return (
-    <div className="navbar">
+    <div className={`navbar ${darkMode ? 'dark' : 'light'}`}>
       <div className="in">
       <div className="left">
         <div className="icon">

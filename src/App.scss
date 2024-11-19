@@ -3,6 +3,10 @@ html{
 }
 .app{
     height: 100vh;
+    overflow-y: scroll;
+}
+.app::-webkit-scrollbar {
+    display: none;
 }
 *{
     margin: 0;

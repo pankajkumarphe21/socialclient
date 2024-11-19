@@ -97,13 +97,13 @@ const Profile = () => {
             { err ? err : '' }
         </form>
         <button className="follow" onClick={handleFollow} style={{display:`${authUser===username ? 'none' : ''}`}}>{`${isFollowed ? 'Unfollow' : 'Follow'}`}</button>
-      <div className="posts">
-        {
-          posts.map((post,i)=>(
-            <Post key={i} data={post} handleDelete={()=>handleDelete(post._id)}/>
-          ))
-        }
-      </div>
+        <div className="posts">
+          {
+            posts.map((post,i)=>(
+              <Post key={i} data={post} handleDelete={()=>handleDelete(post._id)}/>
+            ))
+          }
+        </div>
       </div>
       <Rightbar />
       </div>
