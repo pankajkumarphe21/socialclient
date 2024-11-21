@@ -29,7 +29,7 @@ const Post = ({data,handleDelete}) => {
     <div className='post'>
       <div className="top">
         <Link className='username' to={`/profile/${username}`}>{username}</Link>
-        {/* <EditIcon onClick={handleEdit} className='edit'/> */}
+        <EditIcon onClick={handleEdit} className='edit'/>
       </div>
       <hr />
       <img height={'250'} src={`data:image/jpeg;base64,${data.base64Image}`} alt=''></img>
