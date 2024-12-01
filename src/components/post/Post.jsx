@@ -44,7 +44,7 @@ const Post = ({data,handleDelete}) => {
     <div className='post'>
       <div className="top">
         <Link className='username' to={`/profile/${username}`}>{username}</Link>
-        <EditIcon onClick={handleEdit} className='edit'/>
+        {username===user.username && <EditIcon onClick={handleEdit} className='edit'/>}
         {username===user.username && <DeleteIcon onClick={handleDelete}/>}
       </div>
       <hr />
