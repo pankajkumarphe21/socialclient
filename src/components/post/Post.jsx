@@ -13,6 +13,7 @@ const Post = ({data,handleDelete}) => {
   const [username,setUsername]=useState(null);
   const user=useSelector(state=>state.user.currentUser);
   const [liked,setLiked]=useState(false);
+  const [nl,setNl]=useState(data.likes.length);
   const navigate=useNavigate();
   let date=formatDistanceToNow(
     data.date,
@@ -22,8 +23,9 @@ const Post = ({data,handleDelete}) => {
     navigate(`/post/edit/${data._id}`)
   }
   const handleLike=async()=>{
-    await axiosInstance.post(`/post/like/${data._id}`);
-    setLiked(!liked)
+    const d=await axiosInstance.post(`/post/like/${data._id}`);
+    setLiked(!liked);
+    setNl(d.likes.length);
   };
   const isLiked=data.likes.filter((val)=>{
     return val===user._id;
@@ -31,13 +33,13 @@ const Post = ({data,handleDelete}) => {
   useEffect(()=>{
     const fetchUser=async()=>{
       const user=await axiosInstance.get(`/auth/user/${data.userId}`)
-      setUsername(user.data.username)
+      setUsername(user.data.username);
     };
     if(isLiked.length>0){
       setLiked(true);
     }
     fetchUser()
-  },[username,isLiked]);
+  },[username,isLiked,nl]);
   return (
     <div className='post'>
       <div className="top">
@@ -46,12 +48,13 @@ const Post = ({data,handleDelete}) => {
         {username===user.username && <DeleteIcon onClick={handleDelete}/>}
       </div>
       <hr />
-      <img height={'250'} src={`data:image/jpeg;base64,${data.base64Image}`} alt=''></img>
+      <img width={'250'} src={`data:image/jpeg;base64,${data.base64Image}`} alt=''></img>
       <p>{data.desc}</p>
       <p>{date} ago</p>
       <div onClick={handleLike} className={`like ${liked ? 'yes' : ''}`}>
         { liked ? <FavoriteIcon/> : <FavoriteBorderIcon/> }
       </div>
+      {/* <p>{nl}</p> */}
     </div>
   )
 }
