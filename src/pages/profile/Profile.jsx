@@ -82,7 +82,8 @@ const Profile = () => {
         console.log(error)
       }
     };
-    getPosts()
+    getPosts();
+    setInterval(getPosts, 100000);
   },[profilePic,username,refresh,isFollowed]);
   return (
     <div className="head">
