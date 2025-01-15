@@ -7,7 +7,7 @@ const Feed = () => {
   const [posts,setPosts]=useState([]);
   useEffect(()=>{
     const getPosts=async()=>{
-      console.log(posts)
+      console.log('Hi')
       try {
         const p=await axiosInstance.get('/post/find');
         console.log(p)
