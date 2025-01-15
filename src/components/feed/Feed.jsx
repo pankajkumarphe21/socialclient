@@ -15,6 +15,7 @@ const Feed = () => {
         console.log(error)
       }
     };
+    getPosts();
   },[])
   return (
     <div className='feed'>
