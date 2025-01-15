@@ -17,7 +17,7 @@ const Feed = () => {
       }
     };
     getPosts();
-    setInterval(getPosts, 30000);
+    setInterval(getPosts, 100000);
   },[])
   return (
     <div className='feed'>
