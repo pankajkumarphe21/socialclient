@@ -73,6 +73,7 @@ const Profile = () => {
       }
     }
     fetchData();
+    setInterval(fetchData, 100000);
     const getPosts=async()=>{
       try {
         const p=await axiosInstance.get(`/post/find/${username}`);
