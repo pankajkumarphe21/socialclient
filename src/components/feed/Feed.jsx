@@ -7,14 +7,16 @@ const Feed = () => {
   const [posts,setPosts]=useState([]);
   useEffect(()=>{
     const getPosts=async()=>{
+      console.log(posts)
       try {
         const p=await axiosInstance.get('/post/find');
+        console.log(p)
         setPosts(p.data)
       } catch (error) {
         console.log(error)
       }
     };
-    getPosts();
+    setInterval(getPosts, 300000);
   },[])
   return (
     <div className='feed'>

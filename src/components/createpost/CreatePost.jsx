@@ -8,6 +8,7 @@ const CreatePost = () => {
     const [desc,setDesc]=useState('');
     const [file, setFile] = useState(null);
     const [data,setData]=useState(null);
+    const [err,setErr]=useState(null);
     const [filePreview,setFilePreview]=useState(null);
     const username=useSelector(state=>state.user.currentUser.username);
     const handleFileChange = (e) => {
@@ -18,13 +19,19 @@ const CreatePost = () => {
       formData.append('desc',desc);
       const navigate=useNavigate();
       const handlePreview=()=>{
+        setErr(null)
+        if(file===null || file===undefined){
+          setFilePreview(null);
+          setErr('upload image file')
+          return;
+        }
         if(file.type.startsWith('image/')){
           const objectUrl=URL.createObjectURL(file);
           setFilePreview(objectUrl)
           setData(null)
         }
         else{
-          setData('preview for this file type not available')
+          setData('preview for this file type is not available')
           setFilePreview(null)
         }
       }
@@ -37,7 +44,7 @@ const CreatePost = () => {
             await axiosInstance.post('/post/create',formData);
             navigate(`/profile/${username}`)
         } catch (error) {
-            console.log(error)
+          setErr(error.response.data);
         }
     };
   return (
@@ -55,6 +62,7 @@ const CreatePost = () => {
           />
         )}
             <p>{data}</p>
+            {err && err}
         </form>
     </div>
   )
